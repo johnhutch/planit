@@ -1,23 +1,46 @@
-<h1> heyyyy let's make a plan!</h1>
+<div class="page-header text-center">
+  <h1>Planit</h1>
+  <h2>Planning things with people is difficult.<br/>
+    <small>Let us help make something happen.</small></h2>
+</div>
 
-<p id="notice"><%= notice %></p>
+<div class="row start-form">
+  <div class="col-md-6 col-md-offset-3">
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <%= form_for @planner do |f| %>
+      <div class="form-group">
+        <%= f.label "Where can we email you your plan link?" %>
+        <%= f.email_field :email, :class => "form-control", :placeholder => "you@yours.com" %>
+        <p class="help-block">E.g., Let's go out to dinner! Let's have a board game night. When can we go camping.</p>
+      </div>
 
-<%= form_for @planner do |f| %>
-  <%= f.label "Where can we email you your plan link?" %>
-  <%= f.text_field :email %>
+        <%= f.fields_for :made_plans do |builder| %>
+          <%= render 'plan_fields', :f => builder %>
+        <% end %>
 
-  <%= f.fields_for :made_plans do |builder| %>
-    <%= render 'plan_fields', :f => builder %>
-  <% end %>
+      <div class="form-group text-center">
+        <%= f.submit "Add some people to your plan", 'data-disable-with'=> "Saving...", :class => "btn btn-success btn-lg" %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-  <p><%= f.submit "submit", 'data-disable-with'=> "Saving..." %></p>
-<% end %>
 
-<h2>Did you lose your plans? We'll send you an email.</h2>
+<div class="row lost-plans">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <h5>Lose your plans? We can email them to you.</h5>
+    <div class="lost-plans__reminder-form">
+      <%= form_tag reminder_path, remote: true, :class => "form-inline" do %>
+        <div class="form-group">
+          <%= email_field "reminder", "email", :class => "form-control", :placeholder => "you@yours.com" %>
+        </div>
 
-<div id="reminder-form">
-  <%= form_tag reminder_path, remote: true do %>
-    <%= email_field "reminder", "email" %>
-    <%= submit_tag "remind me" %>
-  <% end %>
+        <div class="form-group">
+          <%= submit_tag "remind me", :class => "btn btn-action" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
