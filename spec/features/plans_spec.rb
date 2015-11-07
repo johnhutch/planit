@@ -13,6 +13,6 @@ RSpec.feature "Plans", type: :feature do
     visit root_path
     fill_in "person_email", with: "Joe Blow"
     click_button "submit"
-    expects(page.status_code).to be(200)
+    expect(page.status_code).to be(200)
   end
 end
