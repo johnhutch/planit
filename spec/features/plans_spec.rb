@@ -15,4 +15,11 @@ RSpec.feature "Plans", type: :feature do
     click_button "submit"
     expect(page.status_code).to be(200)
   end
+
+  it "gives you an error message when you enter an improper email address" do 
+    visit root_path
+    fill_in "person_email", with: "qwer09ajsdfalskf"
+    click_button "submit"
+    expect(page).to have_content("fucked up")
+  end
 end
