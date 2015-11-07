@@ -13,6 +13,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         @plan = @person.made_plans.last
+        @plan.people << @person
         format.html { redirect_to edit_plan_path(@plan), notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
