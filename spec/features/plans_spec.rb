@@ -13,15 +13,14 @@ RSpec.feature "Plans", type: :feature do
     visit root_path
     fill_in "person_email", with: "joe@blow.com"
     fill_in "person_made_plans_attributes_0_title", with: "Let's get food!"
-    click_button I18n.t('buttons.add_people')
-    expect(page).to have_content("joe@blow.com")
-    expect(page).to have_content("Let's get food!")
+    click_button I18n.t('button.add_people')
+    expect(page).to have_content("Planning Let's get food!")
   end
 
   it "gives you an error message when you enter an improper email address" do 
     visit root_path
     fill_in "person_email", with: "qwer09ajsdfalskf"
-    click_button I18n.t('buttons.add_people')
+    click_button I18n.t('button.add_people')
     expect(page).to have_content("fucked up")
   end
 end
