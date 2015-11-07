@@ -6,7 +6,7 @@
   <%= f.label "Where can we email you your plan link?" %>
   <%= f.text_field :email %>
 
-  <%= f.fields_for :plan do |builder| %>
+  <%= f.fields_for :made_plans do |builder| %>
     <%= render 'plan_fields', :f => builder %>
   <% end %>
 
