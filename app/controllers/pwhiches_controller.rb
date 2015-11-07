@@ -7,6 +7,15 @@ class PwhichesController < ApplicationController
     end 
   end
 
+  def attach_new
+    plan = Plan.find(params[:id])
+    @pwhich = plan.pwhiches.build
+
+    respond_to do |format|
+      format.js
+    end 
+  end
+
   def edit
     format.js
   end

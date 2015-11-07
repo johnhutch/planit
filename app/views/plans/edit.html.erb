@@ -23,7 +23,7 @@
 
     <section class="particular particular--pwhich js-particular-pwhich">
       <header>
-        <h4><%= link_to "Which <small>type of food are we eating, game are we playing, hobo are we murdering?</small>".html_safe, new_pwhich_path, :remote => true %></h4>
+      <h4><%= link_to "Which <small>type of food are we eating, game are we playing, hobo are we murdering?</small>".html_safe, attach_new_pwhich_path(@plan), :remote => true, :method => :post %></h4>
       </header>
       <div class="particular--pwhich__contents particular__contents js-particular-pwhich-contents">
       </div>

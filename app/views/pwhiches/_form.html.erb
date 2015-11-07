@@ -1,0 +1,9 @@
+<%= form_for pwhich do |f| %>
+  <div class="form-group">
+    <p>Form question inputs go here</p>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit t("button.add_question"), "data-disable-with" => "Saving...", :class => "btn btn-success" %></p>
+  </div>
+<% end %>
