@@ -1,14 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <div class="page-header text-center">
   <h2>Planning <em><%= @plan.title %></em></h2>
+  <h4>Created by <%= @plan.planner.email %></h4>
 </div>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
 
     <h3>What do we need to agree on to make this happen?</h3>
     <section class="particular particular--pwho">
