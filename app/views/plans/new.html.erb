@@ -1,1 +1,8 @@
 <h1> heyyyy let's make a plan!</h1>
+
+<%= form_for @planner do |f| %>
+  <%= f.label "Where can we email you your plan link?" %>
+  <%= f.text_field :email %>
+
+  <p><%= f.submit "submit", 'data-disable-with'=> "Saving..." %></p>
+<% end %>
