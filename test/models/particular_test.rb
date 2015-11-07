@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PollControllerTest < ActionController::TestCase
+class ParticularTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
