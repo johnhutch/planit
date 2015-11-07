@@ -4,8 +4,8 @@
 
 
 <ul>
-<% @person.plans.each do |plan| %>
-  <li><%= plan.title %></li> 
+<% @person.made_plans.each do |plan| %>
+  <li><%= link_to plan.title, plan %></li> 
 <% end %>
 </ul>
 

@@ -51,6 +51,6 @@ class PeopleController < ApplicationController
     end
 
     def person_params
-      params.require(:person).permit(:email)
+      params.require(:person).permit(:email, made_plans_attributes: [ :title, :_destroy ])
     end
 end

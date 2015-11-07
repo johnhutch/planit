@@ -11,9 +11,11 @@ RSpec.feature "Plans", type: :feature do
 
   it "gives the user a form to create their initial plan with an email and question" do 
     visit root_path
-    fill_in "person_email", with: "Joe Blow"
+    fill_in "person_email", with: "joe@blow.com"
+    fill_in "person_made_plans_attributes_0_title", with: "Let's get food!"
     click_button "submit"
-    expect(page.status_code).to be(200)
+    expect(page).to have_content("joe@blow.com")
+    expect(page).to have_content("Let's get food!")
   end
 
   it "gives you an error message when you enter an improper email address" do 
