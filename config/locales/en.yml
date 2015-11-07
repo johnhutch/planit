@@ -23,6 +23,7 @@ en:
   button:
     add_people: "Add some people"
     gimme_plans: "Gimme all my plans"
+    finish: "Finish the plan and send out the invites"
   label:
     email: "Where can we email your plan link?"
     title: "What's the plan?"

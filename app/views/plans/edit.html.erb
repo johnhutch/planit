@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-header text-center">
+  <h2>Planning <em><%= @plan.title %></em></h2>
+</div>
+
+
+<div class="row start-form">
+  <div class="col-md-6 col-md-offset-3">
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <h3>What do we need to agree on to make this happen?</h3>
+    <ul>
+      <li>Who <small>is going to attend this thing?</small></li>
+      <li>Which <small>type of food are we eating, game are we playing, hobo are we murdering, etc?</small></li>
+      <li>When <small>can we all get together to eat, play, murder hoboes?</small></li>
+      <li>Where <small>should we eat, play games, murder hoboes?</li>
+    </ul>
+
+    <button class="btn btn-primary"><%= t('button.finish')%></button>
+  </div>
+</div>
