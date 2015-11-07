@@ -1,2 +1,0 @@
-class PlanController < ApplicationController
-end
