@@ -20,7 +20,7 @@ FactoryGirl.define do
   end
 
   factory :plan do
-    planner_id planner.id
+    association :planner, factory: :planner
     people {[create(:friend1), create(:friend2), create(:friend3)] }
   end
 end
