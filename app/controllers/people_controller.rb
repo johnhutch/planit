@@ -45,6 +45,22 @@ class PeopleController < ApplicationController
     end
   end
 
+  # Mails out a list of plans for the person.
+  # This is called from the reminder email form on the front page.
+  def reminder
+    respond_to do |format|
+      if params[:reminder][:email].blank?
+        @notice = "You did not enter an email address."
+        format.js
+      else
+        email = params[:reminder][:email]
+        PlanMailer.all_plans(email).deliver_now # @TODO replace this with user model
+        @notice = "Plans have been sent to #{email}"
+        format.js
+      end
+    end
+  end
+
   private
     def set_person
       @person = Person.find(params[:id])

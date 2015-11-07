@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :people
   resources :plans
   root 'plans#new'
+  match 'reminder' => 'people#reminder', via: :post
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
