@@ -4,4 +4,6 @@ class Plan < ActiveRecord::Base
   has_many :particulars
 
   accepts_nested_attributes_for :particulars, :allow_destroy => true
+
+  delegate :pwhiches, :pwheres, :pwhens, to: :particulars
 end

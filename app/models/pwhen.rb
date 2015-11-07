@@ -1,0 +1,2 @@
+class Pwhich < Particular
+end
