@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def edit
   end
@@ -11,7 +12,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
         format.html { redirect_to root_path, notice: "You fucked up. Try again." }

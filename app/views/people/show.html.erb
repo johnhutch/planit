@@ -1,2 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @person.email %></h2>
+
+
+<ul>
+<% @person.plans.each do |plan| %>
+  <li><%= plan.title %></li> 
+<% end %>
+</ul>
+

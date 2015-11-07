@@ -6,5 +6,9 @@
   <%= f.label "Where can we email you your plan link?" %>
   <%= f.text_field :email %>
 
+  <%= f.fields_for :plan do |builder| %>
+    <%= render 'plan_fields', :f => builder %>
+  <% end %>
+
   <p><%= f.submit "submit", 'data-disable-with'=> "Saving..." %></p>
 <% end %>
