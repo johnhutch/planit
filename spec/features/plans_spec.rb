@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature "Plans", type: :feature do
-  pending "adds questions to the first particular  #{__FILE__}"
 
   it "loads the welcome page nicely and probably says something about a plan on there somewhere" do
     visit root_path

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :people
   resources :plans
+  resources :pwhiches
+
   root 'plans#new'
   match 'reminder' => 'people#reminder', via: :post
 

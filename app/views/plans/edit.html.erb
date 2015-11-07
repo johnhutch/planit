@@ -4,25 +4,51 @@
   <h2>Planning <em><%= @plan.title %></em></h2>
 </div>
 
-<h5>Current recipients (being moved after I stash pop)</h5>
-<% @plan.people.each do |person| %>
-  <p><%= person.email %></p>
-<% end %>
-
-<div class="row start-form">
-  <div class="col-md-6 col-md-offset-3">
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <% if notice %>
       <p class="notice"><%= notice %></p>
     <% end %>
 
     <h3>What do we need to agree on to make this happen?</h3>
-    <ul>
-      <li>Who <small>is going to attend this thing?</small></li>
-      <li>Which <small>type of food are we eating, game are we playing, hobo are we murdering, etc?</small></li>
-      <li>When <small>can we all get together to eat, play, murder hoboes?</small></li>
-      <li>Where <small>should we eat, play games, murder hoboes?</li>
-    </ul>
+    <section class="particular particular--pwho">
+      <header>
+        <h4>Who <small>is going to attend this thing?</small></h4>
+      </header>
+      <div class="particular--pwho__contents particular__contents">
+        <h5>Current invitees:</h5>
+        <ul>
+        <% @plan.people.each do |person| %>
+          <li><%= person.email %></li>
+        <% end %>
+        </ul>
+      </div>
+    </section>
 
-    <button class="btn btn-primary"><%= t('button.finish')%></button>
+    <section class="particular particular--pwhich js-particular-pwhich">
+      <header>
+        <h4><%= link_to "Which <small>type of food are we eating, game are we playing, hobo are we murdering?</small>".html_safe, new_pwhich_path, :remote => true %></h4>
+      </header>
+      <div class="particular--pwhich__contents particular__contents js-particular-pwhich-contents">
+      </div>
+    </section>
+
+    <section class="particular particular--pwhen">
+      <header>
+        <h4>When <small>can we all get together to eat, play, murder hoboes?</small></h4>
+      </header>
+      <div class="particular--pwhen__contents particular__contents">
+      </div>
+    </section>
+
+    <section class="particular particular--pwhere">
+      <header>
+        <h4>Where <small>should we eat, play games, murder hoboes?</h4>
+      </header>
+      <div class="particular--pwhere__contents particular__contents">
+      </div>
+    </section>
+
+    <button class="btn btn-lg btn-primary"><%= t('button.finish')%></button>
   </div>
 </div>
