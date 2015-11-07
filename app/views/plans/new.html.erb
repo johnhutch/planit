@@ -21,7 +21,7 @@
         <% end %>
 
       <div class="form-group text-center">
-        <%= f.submit "Add some people to your plan", 'data-disable-with'=> "Saving...", :class => "btn btn-success btn-lg" %></p>
+        <%= f.submit t('buttons.add_people'), 'data-disable-with'=> "Saving...", :class => "btn btn-success btn-lg" %></p>
       </div>
     <% end %>
   </div>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group">
-          <%= submit_tag "remind me", :class => "btn btn-action" %>
+          <%= submit_tag t('buttons.gimme_plans'), :class => "btn btn-action" %>
         </div>
       <% end %>
     </div>

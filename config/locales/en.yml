@@ -20,4 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  buttons:
+    add_people: "Add some people"
+    gimme_plans: "Gimme all my plans"
