@@ -15,6 +15,9 @@
 
 <h2>Did you lose your plans? We'll send you an email.</h2>
 
-<%= form_tag do %>
-  
-<% end %>
+<div id="reminder-form">
+  <%= form_tag reminder_path, remote: true do %>
+    <%= email_field "reminder", "email" %>
+    <%= submit_tag "remind me" %>
+  <% end %>
+</div>
