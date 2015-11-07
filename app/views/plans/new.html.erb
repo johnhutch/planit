@@ -11,9 +11,8 @@
     <% end %>
     <%= form_for @planner do |f| %>
       <div class="form-group">
-        <%= f.label "Where can we email you your plan link?" %>
-        <%= f.email_field :email, :class => "form-control", :placeholder => "you@yours.com" %>
-        <p class="help-block">E.g., Let's go out to dinner! Let's have a board game night. When can we go camping.</p>
+        <%= f.label t('label.email') %>
+        <%= f.email_field :email, :class => "form-control", :placeholder => t('placeholder.email') %>
       </div>
 
         <%= f.fields_for :made_plans do |builder| %>
@@ -21,7 +20,7 @@
         <% end %>
 
       <div class="form-group text-center">
-        <%= f.submit t('buttons.add_people'), 'data-disable-with'=> "Saving...", :class => "btn btn-success btn-lg" %></p>
+        <%= f.submit t('button.add_people'), 'data-disable-with' => "Saving...", :class => "btn btn-success btn-lg" %></p>
       </div>
     <% end %>
   </div>
@@ -34,18 +33,13 @@
     <div class="lost-plans__reminder-form js-reminder-form">
       <%= form_tag reminder_path, remote: true, :class => "form-inline" do %>
         <div class="form-group">
-          <%= email_field "reminder", "email", :class => "form-control", :placeholder => "you@yours.com" %>
+          <%= email_field "reminder", "email", :class => "form-control", :placeholder => t('placeholder.email') %>
         </div>
 
         <div class="form-group">
-          <%= submit_tag t('buttons.gimme_plans'), :class => "btn btn-action" %>
+          <%= submit_tag t('button.gimme_plans'), 'data-disable-with' => "Sending...", :class => "btn btn-action" %>
         </div>
       <% end %>
     </div>
   </div>
-</div>
-
-<div>
-<p>U: <%= ENV['SENDGRID_USERNAME'] %></p>
-<p>P: <%= ENV['SENDGRID_PASSWORD'] %></p>
 </div>

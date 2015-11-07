@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  buttons:
+  button:
     add_people: "Add some people"
     gimme_plans: "Gimme all my plans"
+  label:
+    email: "Where can we email your plan link?"
+    title: "What's the plan?"
+  placeholder:
+    email: "you@yours.com"
+    title: "Dinner in Philadelphia"
