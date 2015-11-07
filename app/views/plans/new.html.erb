@@ -31,7 +31,7 @@
 <div class="row lost-plans">
   <div class="col-md-8 col-md-offset-2 text-center">
     <h5>Lose your plans? We can email them to you.</h5>
-    <div class="lost-plans__reminder-form">
+    <div class="lost-plans__reminder-form js-reminder-form">
       <%= form_tag reminder_path, remote: true, :class => "form-inline" do %>
         <div class="form-group">
           <%= email_field "reminder", "email", :class => "form-control", :placeholder => "you@yours.com" %>
@@ -43,4 +43,9 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<div>
+U: <%= ENV['SENDGRID_USERNAME'] %>
+P: <%= ENV['SENDGRID_PASSWORD'] %>
 </div>
