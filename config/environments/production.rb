@@ -71,9 +71,10 @@ Rails.application.configure do
     domain: "heroku.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV['mailer_username'],
-    password: ENV['mailer_password']
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD']
   }
+  # The above ENV variables were set using heroku config:add SENDGRID_USERNAME=blahblahblah
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
