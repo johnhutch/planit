@@ -31,6 +31,8 @@ en:
     planner_email: "Where can we email your plan link?"
     email: "Email"
     title: "What's the plan?"
+    question: "What do you want to ask the group?"
   placeholder:
     email: "you@yours.com"
     title: "Dinner in Philadelphia"
+    question: "What should we eat? Which movie are we watching?"

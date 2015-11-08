@@ -31,6 +31,12 @@
       <h4><%= link_to "Which <small>type of food are we eating, game are we playing, hobo are we murdering?</small>".html_safe, attach_new_pwhich_path(@plan), :remote => true, :method => :post %></h4>
       </header>
       <div class="particular--pwhich__contents particular__contents js-particular-pwhich-contents">
+        <div class="particular--pwhich__contents__pwhiches js-particular-pwhiches">
+          <% if @plan.pwhiches %>
+            <h5>Current questions</h5>
+            <%= render partial: "pwhich", collection: @plan.pwhiches %>
+          <% end %>
+        </div>
       </div>
     </section>
 
