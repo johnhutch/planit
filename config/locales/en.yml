@@ -24,10 +24,12 @@ en:
     add_people: "Add some people"
     gimme_plans: "Gimme all my plans"
     finish: "Finish the plan and send out the invites"
-    add_question: "Add a choice"
+    add_question: "Save Question"
   label:
     email: "Where can we email your plan link?"
     title: "What's the plan?"
+    question: "What do you want to ask the group?"
   placeholder:
     email: "you@yours.com"
     title: "Dinner in Philadelphia"
+    question: "What should we eat? Which movie are we watching?"

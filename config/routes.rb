@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :people
   resources :plans
-  resources :particulars
+  resources :particulars do
+    member do
+      get 'bad_save'
+    end
+  end
   resources :pwhiches do
     member do
       post 'attach_new'
