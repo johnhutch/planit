@@ -20,7 +20,6 @@ class PwhichesController < ApplicationController
   def save_attach
     plan = Plan.find(params[:id])
     @pwhich = plan.pwhiches.build(particular_params)
-    byebug
 
     respond_to do |format|
       if @pwhich.save

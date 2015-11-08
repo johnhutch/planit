@@ -1,0 +1,3 @@
+// BUG: why is delay being ignored here? And why does execution stop if you use setTimeout instead?
+$('.lastClicked').slideUp(300).delay(300).remove();
+$("<%= j (render partial: 'choices/single', locals: {choice: @choice }) %>").appendTo($('.js-choice-fields-<%= @choice.particular_id %>')).hide().slideDown(300);

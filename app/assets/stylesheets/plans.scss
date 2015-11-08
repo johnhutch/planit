@@ -6,6 +6,9 @@
 .particular--pwhich__question:nth-child(odd) {background-color: $gray-lightest; border-color: $gray-lighter;}
 .particular--pwhich__question__control {font-size: .9em; top: 4px; position: absolute; right: 15px;padding-right: 10px; }
 .particular--pwhich__question__control i {font-size: 1.2em; top: 1px; right: -12px;  position: absolute; }
-.particular--pwhich__question__destroy {color: $brand-danger; right: 18px; padding-right: 13px; }
+.particular--pwhich__question__destroy {color: $brand-danger; right: 18px; padding-right: 10px; }
 .particular--pwhich__question__destroy i {top: 1px; right: -12px; }
 .particular--pwhich__question__add-choice, {right: 90px;}
+
+.particular--pwhich__question__choices {margin:0}
+.particular--pwhich__question__choices li {margin-bottom: 10px;}

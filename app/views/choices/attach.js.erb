@@ -1,1 +1,10 @@
-$("<%= j (render partial: 'pwhiches/choice_fields', locals: {choice: @choice }) %>").appendTo($('.js-choice-fields')).hide().slideDown("slow");
+var template = $("<%= j (render partial: 'pwhiches/choice_fields', locals: {choice: @choice, pwhich: @pwhich }) %>");
+
+template.appendTo($('.js-choice-fields-<%= @pwhich.id %>')).hide().slideDown("slow");
+
+var submitBtn = template.find('input[type="submit"]');
+
+submitBtn.on('click', function() {
+  var formListItem = $(this).closest('.js-choice-form-list-item');
+  formListItem.addClass('lastClicked');
+});

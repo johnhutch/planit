@@ -1,4 +1,15 @@
-<div class="choice_fields form-group">
-  <%= f.label :answer, t('label.choice') %>
-  <%= f.text_field :answer, :placeholder => t('placeholder.choice'), :class => "form-control input-xs" %>
-</div>
+<!-- called by app/views/choices/attach.js.erb -->
+
+<li class="js-choice-form-list-item form-inline">
+  <%= form_for choice, remote: true do |f| %>
+    <div class="choice_fields form-group">
+      <%= f.label :answer, t('label.choice'), :class => "sr-only" %>
+      <%= f.text_field :answer, :placeholder => t('placeholder.choice'), :class => "form-control input-sm" %>
+    </div>
+
+      <div class="form-group">
+        <%= f.submit t("button.add"), "data-disable-with" => "Saving...", :class => "btn btn-default btn-xs" %>
+      </div>
+    <%= f.hidden_field :particular_id %>
+  <% end %>
+</li>
