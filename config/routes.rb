@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :pwhiches do
     member do
       post 'attach_new'
+      post 'save_attach'
     end
   end
 

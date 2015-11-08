@@ -1,1 +1,6 @@
-<div class="particular--pwhich__question"><%= pwhich.question %></div>
+<div class="particular--pwhich__question js-pwhich-question-<%= pwhich.id %>">
+  <i class="glyphicon glyphicon-arrow-right"></i> <%= pwhich.question %>
+  <%= link_to pwhich, remote: true, :url => pwhich_path, method: :delete, :class => "particular--pwhich__question__destroy", data: {confirm: 'Are you sure?' } do %>
+    <i class="glyphicon glyphicon-remove-circle js-destroy-pwhich"></i> 
+  <% end %>
+</div>

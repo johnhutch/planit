@@ -1,2 +1,7 @@
 .particular__contents { margin-left: 1em;}
-.particular {padding: .4em 1em; margin-bottom: 1em; border: 1px solid #ccc; border-bottom-width: 3px; @include border-radius(5px);}
+.particular {padding: .4em 1em; margin-bottom: 1em; border: 1px solid $gray-lighter; border-bottom-width: 3px; @include border-radius(5px);}
+.particular__add-new {margin-bottom: .8em; margin-top: 1em;}
+
+.particular--pwhich__question {border-bottom: 1px solid $gray-lighter; position: relative; padding: 2px 4px;}
+.particular--pwhich__question:nth-child(odd) {background-color: $gray-lightest; border-color: $gray-lighter;}
+.particular--pwhich__question__destroy {color: $brand-danger; font-size: 1.2em; bottom: -4px; position: absolute; right: 10px; }
