@@ -1,7 +1,7 @@
 <div class="page-header text-center">
-  <h1>Planit</h1>
   <h2>Planning things with people is difficult.<br/>
     <small>Let us help make something happen.</small></h2>
+  <h1>Planit</h1>
 </div>
 
 <div class="row start-form">
@@ -10,14 +10,16 @@
       <p class="notice"><%= notice %></p>
     <% end %>
     <%= form_for @planner do |f| %>
+
+      <%= f.fields_for :made_plans do |builder| %>
+        <%= render 'plan_fields', :f => builder %>
+      <% end %>
+
       <div class="form-group">
         <%= f.label t('label.planner_email') %>
-        <%= f.email_field :email, :class => "form-control", :placeholder => t('placeholder.email') %>
+        <%= f.email_field :email, :class => "form-control input-lg", :placeholder => t('placeholder.email') %>
+        <p class="help-block"><%= t('label.front_email_help') %></p>
       </div>
-
-        <%= f.fields_for :made_plans do |builder| %>
-          <%= render 'plan_fields', :f => builder %>
-        <% end %>
 
       <div class="form-group text-center">
         <%= f.submit t('button.add_people'), 'data-disable-with' => "Saving...", :class => "btn btn-success btn-lg" %></p>
@@ -32,12 +34,12 @@
     <h5>Lose your plans? We can email them to you.</h5>
     <div class="lost-plans__reminder-form js-reminder-form">
       <%= form_tag reminder_path, remote: true, :class => "form-inline" do %>
-        <div class="form-group">
+        <div class="form-group form-group-sm">
           <%= email_field "reminder", "email", :class => "form-control", :placeholder => t('placeholder.email') %>
         </div>
 
         <div class="form-group">
-          <%= submit_tag t('button.gimme_plans'), 'data-disable-with' => "Sending...", :class => "btn btn-action" %>
+          <%= submit_tag t('button.gimme_plans'), 'data-disable-with' => "Sending...", :class => "btn btn-default" %>
         </div>
       <% end %>
     </div>

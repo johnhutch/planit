@@ -21,17 +21,18 @@
 
 en:
   button:
-    add_people: "Add some people"
+    add_people: "Go invite some people"
     add_person: "Invite this person"
     gimme_plans: "Gimme all my plans"
     finish: "Finish the plan and send out the invites"
     add_question: "Save this question"
     nevermind: "Nevermind"
   label:
-    planner_email: "Where can we email your plan link?"
+    planner_email: "And what's your email?"
     email: "Email"
-    title: "What's the plan?"
+    title: "So what's the plan?"
     question: "What do you want to ask the group?"
+    front_email_help: "That's it! No need to sign up, we'll just email you a secure link to your plan!"
   placeholder:
     email: "you@yours.com"
     title: "Dinner in Philadelphia"
