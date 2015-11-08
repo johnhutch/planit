@@ -13,28 +13,20 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @planner = Person.find_or_create_by(email: params[:plan][:person][:email])
 
-    # Create one token for the planner to use for editing the plan
-    @planner_token = Token.new
-    @planner_token.id = SecureRandom.hex(32)
-    @planner_token.is_planner_token = true
-    @planner_token.plan = @plan
-    @planner_token.person = @planner
-    @planner_token.save
+    planner_token = Token.new
+    planner_token.become_planner_token(@plan, @planner)
+    planner_token.save
 
     @plan.planner = @planner
-    @plan.planner_token_id = @planner_token.id
+    @plan.planner_token_id = planner_token.id
     @plan.people << @planner
     
     respond_to do |format|
-      if @plan.save && @planner.save && @planner_token.save
+      if @plan.save && @planner.save && planner_token.save
 
-        # Then create one token for the planner to answer the questions like a normal invitee.
-        normal_token = Token.new
-        normal_token.id = SecureRandom.hex(32)
-        normal_token.is_planner_token = false
-        normal_token.plan = @plan
-        normal_token.person = @planner
-        normal_token.save
+        regular_token = Token.new
+        regular_token.become_regular_token(@plan, @planner)
+        regular_token.save
 
         format.html { redirect_to edit_plan_path(@plan), notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @person }
