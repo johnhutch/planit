@@ -1,4 +1,13 @@
-FactoryGirl.define do  
+FactoryGirl.define do  factory :answer do
+    other "MyText"
+choice_id 1
+response_id 1
+  end
+  factory :response do
+    person_id 1
+plan_id 1
+  end
+  
   factory :choice do
     particular_id 1
     answer "MyString"
