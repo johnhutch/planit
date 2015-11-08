@@ -5,6 +5,10 @@
 @import "bootswatch";
 @import "plans";
 
+h1, h2, h3 {
+  font-family: 'Gudea', sans-serif;
+}
+
 .page-header {
   font-family: 'Gudea', sans-serif;
   @include background-image(linear-gradient(to bottom right, #dfdfdd, white ));
