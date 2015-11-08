@@ -9,9 +9,22 @@
   <%= csrf_meta_tags %>
   <meta name="description" content="Make plans with people. Easier.">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href='https://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
+
+<div class="container-fluid page-header page-header__hero">
+  <% if content_for?(:page_header) %>
+    <%= yield :page_header %>
+  <% else %>
+    <div class="text-center">
+      <h2>Planning things with people is difficult.<br/>
+        <small>Let us help make something happen.</small></h2>
+      <h1 class="page-header__logo">PLANiT</h1>
+    </div>
+  <% end %>
+</div>
 
 <div class="container-fluid">
 
