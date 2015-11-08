@@ -75,6 +75,6 @@
       </div>
     </section>
 
-    <button class="btn btn-lg btn-primary"><%= t('button.finish')%></button>
+    <%= link_to t('button.finish'), finalize_plan_path(@plan), 'data-disable-with' => 'Taking care of business...', :class => "btn btn-lg btn-primary", :method => :post %>
   </div>
 </div>

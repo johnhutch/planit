@@ -24,11 +24,6 @@ class PlansController < ApplicationController
     
     respond_to do |format|
       if @plan.save && @planner.save && planner_token.save
-
-        regular_token = Token.new
-        regular_token.become_regular_token(@plan, @planner)
-        regular_token.save
-
         format.html { redirect_to edit_plan_path(@plan), notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -66,6 +61,26 @@ class PlansController < ApplicationController
     @token = Token.find(params[:id])
     @plan = @token.plan
     @person = @token.person
+  end
+
+  def finalize
+    @plan = Plan.find_by(:planner_token_id => params[:id])
+    @plan.is_finalized = true
+
+    @plan.people.map do |p|
+      person_token = Token.new
+      person_token.become_regular_token(@plan, p)
+      person_token.save
+    end
+
+    respond_to do |format|
+      if @plan.save
+        @plan.send_out_invites
+        format.html { redirect_to respond_plan_path(@plan.planners_other_token.id) }
+      else
+        format.html { redirect_to edit_plan_path(@plan), notice: 'That finalize button isn\'t working.' }
+      end
+    end
   end
 
   private
