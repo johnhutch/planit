@@ -1,1 +1,31 @@
-These are all of your plans.
+Here are all the plans for <%= @person.email %></h1>
+
+<% if @person.tokens.empty? %>
+We're not sure what you might remember, but it doesn't look like you have any plans. At least not through our site.
+
+It's possible someone just popped your email address in as a joke. We hope you find that jerkface.
+<% else %>
+<% unless @person.planner_tokens.empty? %>
+Here are links to edit all the plans that you started. You can invite some more friends. You can work out more particulars. You can check on the status of everyone's responses. Or you can just say screw it and delete everything. You also have to use these links to finalize each plan.
+
+    <% @person.planner_tokens.each do |t| %>
+    Token: <%= t.id %>
+
+    <% end %>
+<% else %>
+You haven't created any plans but that's cool, you must have plenty to do already.
+<% end %>
+
+<% unless @person.regular_tokens.empty? %>
+Here are links to give your two cents on the particulars of plans that some great friend invited you to. The sooner you get them answered, the sooner you can hang.
+
+    <% @person.regular_tokens.each do |t| %>
+    Token: <%= t.id %>
+
+    <% end %>
+<% else %>
+Oh. Gee. Um. You haven't been invited to anything. But hey maybe that means you're the organizing type. A true leader.
+<% end %>
+<% end %>
+
+Brought to you by <%= t('site.name') %>, on the web at <%= t('site.url') %>

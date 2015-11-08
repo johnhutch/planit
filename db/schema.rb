@@ -52,4 +52,12 @@ ActiveRecord::Schema.define(version: 20151108061809) do
     t.string   "title"
   end
 
+  create_table "tokens", force: :cascade do |t|
+    t.integer  "person_id",                        null: false
+    t.integer  "plan_id",                          null: false
+    t.boolean  "is_planner_token", default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
 end

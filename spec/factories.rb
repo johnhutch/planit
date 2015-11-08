@@ -1,6 +1,10 @@
-FactoryGirl.define do  factory :choice do
+FactoryGirl.define do  
+  factory :choice do
     particular_id 1
     answer "MyString"
+  end
+
+  factory :token do
   end
 
   factory :planner, class: Person do

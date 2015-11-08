@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  site:
+    name: "Planit"
+    url: "http://harisputch.r15.railsrumble.com/"
   button:
     add_people: "Go invite some people"
     add_person: "Invite this person"
@@ -39,3 +42,5 @@ en:
     title: "Dinner in Philadelphia"
     question: "What should we eat? Which movie are we watching?"
     choice: "Italian, carcassone, in a dark alley"
+  error:
+    blank_email: "You did not enter an email address." 
