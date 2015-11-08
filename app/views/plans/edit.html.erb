@@ -3,7 +3,7 @@
     <div class="col-md-8 col-md-offset-2">
       <%= link_to root_path do %><h1 class="page-header__logo page-header__logo--sideways">PLANiT</h1><% end %>
       <h2>Planning <em><%= @plan.title %></em></h2>
-      <h4>Managed by <%= @plan.planner.email %></h4>
+      <h4>Managed by <%= @plan.planner.name %></h4>
     </div>
   </div>
 <% end %>
@@ -18,16 +18,14 @@
       </header>
 
       <div class="particular--pwho__contents particular__contents">
-        <% if @plan.people.size > 1 %>
-          <h5>Current invitees:</h5>
-          <ul class="js-invitee-list">
+        <h5>Current invitees:</h5>
+        <ul class="js-invitee-list">
           <% @plan.people.each do |person| %>
             <% unless person == @plan.planner %>
-              <li><%= person.email %></li>
+              <li><%= person.name %> - <%= person.email %></li>
             <% end %>
           <% end %>
-          </ul>
-        <% end %>
+        </ul>
 
         <div class="particular--pwho__form js-particular-pwho-form">
         </div>

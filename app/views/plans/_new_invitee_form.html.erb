@@ -1,6 +1,11 @@
 <%= form_for @invitee, :as => :invitee, :url => add_invitee_plan_path(@plan), :remote => true do |f| %>
   <div class="form-inline">
     <div class="form-group">
+      <%= f.label t('label.name') %>
+      <%= f.text_field :name, :class => "form-control", :placeholder => t('placeholder.name') %>
+    </div>
+
+    <div class="form-group">
       <%= f.label t('label.email') %>
       <%= f.email_field :email, :class => "form-control", :placeholder => t('placeholder.email') %>
     </div>

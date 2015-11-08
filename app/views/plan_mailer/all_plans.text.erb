@@ -1,4 +1,4 @@
-Here are all the plans for <%= @person.email %></h1>
+Here are all the plans for <%= @person.name %></h1>
 
 <% if @person.tokens.empty? %>
 We're not sure what you might remember, but it doesn't look like you have any plans. At least not through our site.
@@ -6,10 +6,11 @@ We're not sure what you might remember, but it doesn't look like you have any pl
 It's possible someone just popped your email address in as a joke. We hope you find that jerkface.
 <% else %>
 <% unless @person.planner_tokens.empty? %>
-Here are links to edit all the plans that you started. You can invite some more friends. You can work out more particulars. You can check on the status of everyone's responses. Or you can just say screw it and delete everything. You also have to use these links to finalize each plan.
+You can edit all the plans that you started. You can invite some more friends. You can work out more particulars. You can check on the status of everyone's responses. Or you can just say screw it and delete everything. You also have to use these links to finalize each plan.
 
     <% @person.planner_tokens.each do |t| %>
-    Token: <%= t.id %>
+    Plan: <%= t.plan.title %>
+    URL: <%= edit_plan_url(t.plan) %>
 
     <% end %>
 <% else %>
@@ -17,10 +18,11 @@ You haven't created any plans but that's cool, you must have plenty to do alread
 <% end %>
 
 <% unless @person.regular_tokens.empty? %>
-Here are links to give your two cents on the particulars of plans that some great friend invited you to. The sooner you get them answered, the sooner you can hang.
+How about that? People want to make plans with you. Use these links to give your two cents on the particulars. The sooner you get them answered, the sooner you can hang.
 
     <% @person.regular_tokens.each do |t| %>
-    Token: <%= t.id %>
+    Plan: <%= t.plan.title %>
+    URL: <%= respond_plan_url(t) %>
 
     <% end %>
 <% else %>

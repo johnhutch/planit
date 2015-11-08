@@ -1,1 +1,8 @@
-This is an email invite.
+<%= @plan.title %>
+
+<%= @plan.planner.name %> wants to hang out.
+
+Visit the following URL to figure out the particulars:
+<%= respond_plan_url(@token) %>
+
+Brought to you by <%= t('site.name') %>, on the web at <%= t('site.url') %>

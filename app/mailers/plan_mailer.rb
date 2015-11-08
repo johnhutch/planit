@@ -1,9 +1,10 @@
 class PlanMailer < ApplicationMailer
   default from: "planit.mailer@gmail.com"
 
-  def invite(person, plan)
-    @person = person
-    @plan = plan
+  def invite(token)
+    @token = token
+    @person = token.person
+    @plan = token.plan
     mail(to: @person.email, subject: "A Friend of Yours is Totally Looking to Hang")
   end
 

@@ -31,17 +31,22 @@ en:
     finish: "Finish the plan and send out the invites"
     add_question: "Save this question"
     nevermind: "Nevermind"
+    submit_responses: "Submit reponses"
   label:
+    planner_name: "What's your name?"
     planner_email: "And what's your email?"
     email: "Email"
+    name: "Name"
     title: "So what's the plan?"
     question: "What do you want to ask the group?"
     front_email_help: "That's it! No need to sign up, we'll just email you a secure link to your plan!"
     choice: "Multiple choice answer:"
   placeholder:
     email: "you@yours.com"
+    name: "Paris Hutchinson"
     title: "Dinner in Philadelphia"
     question: "What should we eat? Which movie are we watching?"
     choice: "Italian, carcassone, in a dark alley"
   error:
     blank_email: "You did not enter an email address." 
+    blank_name: "You did not enter a name."

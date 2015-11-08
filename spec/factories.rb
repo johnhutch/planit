@@ -1,4 +1,7 @@
-FactoryGirl.define do  
+FactoryGirl.define do  factory :response do
+    
+  end
+  
   factory :choice do
     particular_id 1
     answer "MyString"

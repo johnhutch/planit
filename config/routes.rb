@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       post 'new_invitee'
       post 'add_invitee'
+      get 'respond'
     end
   end
   resources :particulars do
