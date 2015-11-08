@@ -14,14 +14,14 @@
 
     <section class="particulars">
       <% unless @plan.particulars.empty? %>
-        <%= @plan.particulars.each do |p| %>
+        <% @plan.particulars.each do |p| %>
           <div class="particular">
             <header>
               <h4><%= p.question %></h4>
             </header>
 
             <div class="particular__choices">
-              <%= p.choices.each do |c| %>
+              <% p.choices.each do |c| %>
                 <div class="particular__choice"><%= c.answer %></div>
               <% end %>
             </div>
