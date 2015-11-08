@@ -22,11 +22,14 @@
 en:
   button:
     add_people: "Add some people"
+    add_person: "Add person"
     gimme_plans: "Gimme all my plans"
     finish: "Finish the plan and send out the invites"
     add_question: "Add a choice"
+    nevermind: "Nevermind"
   label:
-    email: "Where can we email your plan link?"
+    planner_email: "Where can we email your plan link?"
+    email: "Email"
     title: "What's the plan?"
   placeholder:
     email: "you@yours.com"

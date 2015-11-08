@@ -1,0 +1,2 @@
+$('.js-add-a-person').hide();
+$('.js-particular-pwho-form').hide().html("<%= j render :partial => 'new_invitee_form', :locals => { :plan => @plan, :invitee => @invitee } %>").slideDown("slow");

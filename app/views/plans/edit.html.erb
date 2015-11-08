@@ -13,11 +13,16 @@
       </header>
       <div class="particular--pwho__contents particular__contents">
         <h5>Current invitees:</h5>
-        <ul>
+        <ul class="js-invitee-list">
         <% @plan.people.each do |person| %>
           <li><%= person.email %></li>
         <% end %>
         </ul>
+        <%= link_to new_invitee_plan_path(@plan), :class => "js-add-a-person", :remote => true, :method => :post do %>
+          <i class="glyphicon glyphicon-plus"></i>
+        <% end %>
+        <div class="particular--pwho__form js-particular-pwho-form">
+        </div>
       </div>
     </section>
 

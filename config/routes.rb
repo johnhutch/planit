@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
+  root 'plans#new'
+  post 'reminder' => 'people#reminder'
+
   resources :people
-  resources :plans
+  resources :plans do
+    member do
+      post 'new_invitee'
+      post 'add_invitee'
+    end
+  end
   resources :particulars
   resources :pwhiches do
     member do
       post 'attach_new'
     end
   end
-
-  root 'plans#new'
-  match 'reminder' => 'people#reminder', via: :post
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

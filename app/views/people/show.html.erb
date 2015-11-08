@@ -2,10 +2,8 @@
 
 <h2><%= @person.email %></h2>
 
-
 <ul>
 <% @person.made_plans.each do |plan| %>
   <li><%= link_to plan.title, plan %></li> 
 <% end %>
 </ul>
-
