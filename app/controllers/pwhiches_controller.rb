@@ -8,7 +8,7 @@ class PwhichesController < ApplicationController
   end
 
   def attach_new
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find_by(:planner_token_id => params[:id])
     @pwhich = @plan.pwhiches.build
     @pwhich.choices.build
 
@@ -18,7 +18,7 @@ class PwhichesController < ApplicationController
   end
 
   def save_attach
-    plan = Plan.find(params[:id])
+    plan = Plan.find_by(:planner_token_id => params[:id])
     @pwhich = plan.pwhiches.build(particular_params)
     byebug
 

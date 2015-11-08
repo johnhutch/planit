@@ -3,14 +3,14 @@
     <div class="col-md-8 col-md-offset-2">
       <%= link_to root_path do %><h1 class="page-header__logo page-header__logo--sideways">PLANiT</h1><% end %>
       <h2>Particulars for <em><%= @plan.title %></em></h2>
-      <h4>Managed by <%= @plan.planner.email %></h4>
+      <h4>Managed by <%= @plan.planner.name %></h4>
     </div>
   </div>
 <% end %>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h3>Let <%= @plan.planner.email %> know what you think about all this.</h3>
+    <h3>Let <%= @plan.planner.name %> know what you think about all this.</h3>
 
     <section class="particulars">
       <% unless @plan.particulars.empty? %>

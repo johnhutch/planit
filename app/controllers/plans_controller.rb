@@ -12,6 +12,7 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @planner = Person.find_or_create_by(email: params[:plan][:person][:email])
+    @planner.name = params[:plan][:person][:name]
 
     planner_token = Token.new
     planner_token.become_planner_token(@plan, @planner)
@@ -38,7 +39,7 @@ class PlansController < ApplicationController
   end
 
   def new_invitee
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find_by(:planner_token_id => params[:id])
     @invitee = @plan.people.build
 
     respond_to do |format|
@@ -47,8 +48,9 @@ class PlansController < ApplicationController
   end
 
   def add_invitee
-    @plan = Plan.find(params[:id])
-    @invitee = Person.find_or_create_by(invitee_params)
+    @plan = Plan.find_by(:planner_token_id => params[:id])
+    @invitee = Person.find_or_create_by(email: params[:invitee][:email])
+    @invitee.name = params[:invitee][:name]
 
     respond_to do |format|
       if @invitee.save
@@ -76,6 +78,6 @@ class PlansController < ApplicationController
     end
 
     def invitee_params
-      params.require(:invitee).permit(:email)
+      params.require(:invitee).permit(:email, :name)
     end
 end
