@@ -11,7 +11,7 @@ class ParticularsController < ApplicationController
 
   private
     def set_particular
-      @particular = particular.find(params[:id])
+      @particular = Particular.find(params[:id])
     end
 
     def particular_params
