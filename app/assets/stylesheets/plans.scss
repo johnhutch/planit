@@ -1,6 +1,6 @@
 .particular__contents { margin-left: 1em;}
 .particular {padding: .4em 1em; margin-bottom: 1em; border: 1px solid $gray-lighter; border-bottom-width: 3px; @include border-radius(5px);}
-.particular__add-new {margin-bottom: .8em;}
+.particular__add-new {margin-bottom: .8em; margin-top: 1em;}
 
 .particular--pwhich__question {border-bottom: 1px solid $gray-lighter; position: relative; padding: 2px 4px;}
 .particular--pwhich__question:nth-child(odd) {background-color: $gray-lightest; border-color: $gray-lighter;}
