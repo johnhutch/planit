@@ -1,14 +1,99 @@
-.particular__contents { margin-left: 1em;}
-.particular {padding: .4em 1em; margin-bottom: 1em; border: 1px solid $gray-lighter; border-bottom-width: 3px; @include border-radius(5px);}
-.particular__add-new {margin-bottom: .8em; margin-top: 1em;}
+.particular {
+  padding: .4em 1em;
+  margin-bottom: 1em;
+  border: 1px solid $gray-lighter;
+  border-bottom-width: 3px;
+  @include border-radius(5px);
+}
+.particular h4 {
+  border-bottom: 1px solid $gray-lighter;
+}
+.particular__add-new {
+  margin-bottom: .8em;
+  margin-top: 1em;
+}
 
-.particular--pwhich__question {border-bottom: 1px solid $gray-lighter; position: relative; padding: 2px 4px;}
-.particular--pwhich__question:nth-child(odd) {background-color: $gray-lightest; border-color: $gray-lighter;}
-.particular--pwhich__question__control {font-size: .9em; top: 4px; position: absolute; right: 15px;padding-right: 10px; }
-.particular--pwhich__question__control i {font-size: 1.2em; top: 1px; right: -12px;  position: absolute; }
-.particular--pwhich__question__destroy {color: $brand-danger; right: 18px; padding-right: 10px; }
-.particular--pwhich__question__destroy i {top: 1px; right: -12px; }
-.particular--pwhich__question__add-choice, {right: 90px;}
+.particular--pwho__invite-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.particular--pwho__invitee {
+  margin: .2em 0;
+  @include clearfix;
+}
+.particular--pwho__invitee div {
+  float: left;
+}
+.particular--pwho__invitee__name {
+  width: 40%;
+}
+.particular--pwho__invitee__email {
+  color: $gray-light;
+  font-size: .9em;
+  width: 40%;
+}
+.particular--pwho__invitee__destroy {
+  display: block;
+  width: 20%;
+  float:left;
+  text-align: right;
+}
 
-.particular--pwhich__question__choices {margin:0}
-.particular--pwhich__question__choices li {margin-bottom: 10px;}
+.particular--pwhich__question {
+  border-bottom: 1px solid $gray-lighter;
+  position: relative;
+  padding: .4em .1em;
+}
+.particular--pwhich__question__control {
+  font-size: .9em;
+  top: 4px;
+  position: absolute;
+  right: 15px;
+  padding-right: 10px;
+}
+.particular--pwhich__question__control i {
+  font-size: 1.2em;
+  top: 1px;
+  right: -12px; 
+  position: absolute;
+}
+.particular__control {
+  font-size: .9em;
+}
+.particular__control i {
+  font-size: 1.2em;
+}
+.particular__control__destroy {
+  color: $brand-danger;
+}
+.particular--pwhich__question__destroy {
+  right: 18px;
+  padding-right: 10px;
+}
+.particular--pwhich__question__destroy i {
+  top: 1px;
+  right: -12px;
+}
+.particular--pwhich__question__add-choice, {
+  right: 90px;
+}
+
+.particular--pwhich__question__choices {
+  margin:0;
+}
+.particular--pwhich__question__choices li {
+  margin: .2em 0;
+}
+.particular--pwhich__question__choices li:last-child {
+  margin-bottom:0;
+}
+.particular--pwhich__question__choice {
+ }
+
+.finish-plan {
+  margin-top: 40px;
+}
+.finish-plan button {
+  font-size: 1.4em;
+}

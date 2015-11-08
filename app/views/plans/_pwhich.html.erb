@@ -10,7 +10,7 @@
     Add a multiple choice option <i class="glyphicon glyphicon-download"></i> 
   <% end %>
 
-  <%= link_to pwhich, remote: true, :url => pwhich_path, method: :delete, :class => "particular--pwhich__question__destroy particular--pwhich__question__control", data: {confirm: 'Are you sure?' } do %>
+  <%= link_to pwhich, remote: true, :url => pwhich_path, method: :delete, :class => "particular--pwhich__question__destroy particular--pwhich__question__control particular__control particular__control__destroy", data: {confirm: 'Are you sure?' } do %>
     Delete <i class="glyphicon glyphicon-remove-circle js-destroy-pwhich"></i> 
   <% end %>
 </div>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <%= link_to root_path do %><h1 class="page-header__logo page-header__logo--sideways">PLANiT</h1><% end %>
-      <h2>Planning <em><%= @plan.title %></em></h2>
+      <h2>Planning <strong><%= @plan.title %></strong></h2>
       <h4>Managed by <%= @plan.planner.name %></h4>
     </div>
   </div>
@@ -18,12 +18,20 @@
       </header>
 
       <div class="particular--pwho__contents particular__contents">
-        <h5>Current invitees:</h5>
-        <ul class="js-invitee-list">
+        <ul class="js-invitee-list particular--pwho__invite-list">
           <% @plan.people.each do |person| %>
-            <% unless person == @plan.planner %>
-              <li><%= person.name %> - <%= person.email %></li>
-            <% end %>
+            <li class="particular--pwho__invitee js-pwho-invitee-<%= person.id %>">
+              <div class="particular--pwho__invitee__name">
+                <%= person.name %>
+                <% if person == @plan.planner %><i class="glyphicon glyphicon-king"></i><% end %>
+              </div>
+              <div class="particular--pwho__invitee__email"><%= person.email %></div>
+
+              # needs to actually be a form so it can submit both plan and person params
+              <%= link_to person, remote: true, :url => remove_invitee_plan_path, method: :delete, :class => "particular--pwho__invitee__destroy particular--pwho__invitee__control particular__control particular__control__destroy", data: {confirm: 'Are you sure?' } do %>
+                Delete <i class="glyphicon glyphicon-remove-circle js-destroy-pwhich"></i> 
+              <% end %>
+            </li>
           <% end %>
         </ul>
 
@@ -31,9 +39,9 @@
         </div>
       </div>
 
-      <div class="particular--pwho__add-new particular__add-new">
-        <%= link_to new_invitee_plan_path(@plan), :class => "js-add-a-person btn btn-xs btn-primary", :remote => true, :method => :post do %>
-          <i class="glyphicon glyphicon-plus"></i> Invite someone <% if @plan.people %>else<% end %>
+      <div class="particular--pwho__add-new particular__add-new text-center">
+        <%= link_to new_invitee_plan_path(@plan), :class => "js-add-a-person btn btn-primary", :remote => true, :method => :post do %>
+          Invite someone<% if @plan.people %> else<% end %> <i class="glyphicon glyphicon-user"></i> 
         <% end %>
       </div>
     </section>
@@ -45,16 +53,13 @@
 
       <div class="particular--pwhich__contents particular__contents js-particular-pwhich-contents">
         <div class="particular--pwhich__contents__pwhiches js-particular-pwhiches">
-          <% unless @plan.pwhiches.blank? %>
-            <h5>Current questions</h5>
-            <%= render partial: "pwhich", collection: @plan.pwhiches %>
-          <% end %>
+          <%= render partial: "pwhich", collection: @plan.pwhiches %>
         </div>
       </div>
 
-      <div class="particular--pwhich__add-new particular__add-new">
-        <%= link_to attach_new_pwhich_path(@plan), :class => "js-add-a-pwhich btn btn-xs btn-primary", :remote => true, :method => :post do %>
-          <i class="glyphicon glyphicon-plus"></i> Add a new question
+      <div class="particular--pwhich__add-new particular__add-new text-center">
+        <%= link_to attach_new_pwhich_path(@plan), :class => "js-add-a-pwhich btn btn-primary", :remote => true, :method => :post do %>
+          Add a new question <i class="glyphicon glyphicon-check"></i>
         <% end %>
       </div>
     </section>
@@ -75,6 +80,8 @@
       </div>
     </section>
 
-    <button class="btn btn-lg btn-primary"><%= t('button.finish')%></button>
+    <section class="finish-plan text-center">
+      <button class="btn btn-lg btn-success"><%= t('button.finish')%> <i class="glyphicon glyphicon-send"></i></button>
+    </section>
   </div>
 </div>

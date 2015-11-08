@@ -62,6 +62,24 @@ class PlansController < ApplicationController
     end
   end
 
+  def remove_invitee
+    plan = Plan.find(params[:id])
+    invitee = @plan.people.find(params[:invitee][:id])
+    @id = invitee.id
+
+    if invite
+      plan.people.delete(invitee)
+      respond_to do |format|
+        format.js { render :action => "remove_invitee_from_list" }
+      end
+    else 
+      respond_to do |format|
+        format.js { render :action => "bad_remove" }
+      end
+    end
+
+  end
+
   def respond
     @token = Token.find(params[:id])
     @plan = @token.plan
