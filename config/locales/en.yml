@@ -30,6 +30,7 @@ en:
     finish: "Finish the plan and send out the invites"
     add_question: "Save this question"
     nevermind: "Nevermind"
+    submit_responses: "Submit reponses"
   label:
     planner_email: "And what's your email?"
     email: "Email"

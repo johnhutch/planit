@@ -31,7 +31,7 @@
     <p>How about that? People want to make plans with you. Use these links to give your two cents on the particulars. The sooner you get them answered, the sooner you can hang.</p>
     <ul>
       <% @person.regular_tokens.each do |t| %>
-        <li>Token: <%= t.id %></li>
+        <li><%= link_to t.plan.title, respond_plan_url(t) %></li>
       <% end %>
     </ul>
   <% else %>

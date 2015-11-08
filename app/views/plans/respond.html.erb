@@ -1,0 +1,35 @@
+<% content_for :page_header do %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= link_to root_path do %><h1 class="page-header__logo page-header__logo--sideways">PLANiT</h1><% end %>
+      <h2>Particulars for <em><%= @plan.title %></em></h2>
+      <h4>Managed by <%= @plan.planner.email %></h4>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Let <%= @plan.planner.email %> know what you think about all this.</h3>
+
+    <section class="particulars">
+      <% unless @plan.particulars.empty? %>
+        <%= @plan.particulars.each do |p| %>
+          <div class="particular">
+            <header>
+              <h4><%= p.question %></h4>
+            </header>
+
+            <div class="particular__choices">
+              <%= p.choices.each do |c| %>
+                <div class="particular__choice"><%= c.answer %></div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+
+    <button class="btn btn-lg btn-primary"><%= t('button.submit_responses')%></button>
+  </div>
+</div>

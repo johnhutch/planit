@@ -10,7 +10,7 @@ You can edit all the plans that you started. You can invite some more friends. Y
 
     <% @person.planner_tokens.each do |t| %>
     Plan: <%= t.plan.title %>
-    URL: <%= edit_plan_url(t.plan) %></li>
+    URL: <%= edit_plan_url(t.plan) %>
 
     <% end %>
 <% else %>
@@ -21,7 +21,8 @@ You haven't created any plans but that's cool, you must have plenty to do alread
 How about that? People want to make plans with you. Use these links to give your two cents on the particulars. The sooner you get them answered, the sooner you can hang.
 
     <% @person.regular_tokens.each do |t| %>
-    Token: <%= t.id %>
+    Plan: <%= t.plan.title %>
+    URL: <%= respond_plan_url(t) %>
 
     <% end %>
 <% else %>

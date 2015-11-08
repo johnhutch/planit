@@ -1,5 +1,12 @@
-<h1>Here is an email</h1>
+<header>
+  <h1><%= @plan.title %></h1>
+</header>
 
-<p>Your email address: <%= @user.email %></p>
+<section>
+  <h3><%= @plan.planner.email %> wants to hang out.</h3>
+  <p><%= link_to "Visit this link", respond_plan_url(@token) %> to figure out the particulars.</p>
+</section>
 
-<p>Here is the plan token: <%= @plan.token %></p>
+<footer>
+  <h6>Brought to you by <a href="<%= t('site.url') %>"><%= t('site.name') %></a></h6>
+</footer>

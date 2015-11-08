@@ -68,6 +68,12 @@ class PlansController < ApplicationController
     end
   end
 
+  def respond
+    @token = Token.find(params[:id])
+    @plan = @token.plan
+    @person = @token.person
+  end
+
   private
     def set_plan
       @plan = Plan.find_by(:planner_token_id => params[:id])
