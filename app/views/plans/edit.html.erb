@@ -11,32 +11,49 @@
       <header>
         <h4>Who <small>is going to attend this thing?</small></h4>
       </header>
+
       <div class="particular--pwho__contents particular__contents">
-        <h5>Current invitees:</h5>
-        <ul class="js-invitee-list">
-        <% @plan.people.each do |person| %>
-          <li><%= person.email %></li>
+        <% if @plan.people.size > 1 %>
+          <h5>Current invitees:</h5>
+          <ul class="js-invitee-list">
+          <% @plan.people.each do |person| %>
+            <% unless person == @plan.planner %>
+              <li><%= person.email %></li>
+            <% end %>
+          <% end %>
+          </ul>
         <% end %>
-        </ul>
-        <%= link_to new_invitee_plan_path(@plan), :class => "js-add-a-person", :remote => true, :method => :post do %>
-          <i class="glyphicon glyphicon-plus"></i>
-        <% end %>
+
         <div class="particular--pwho__form js-particular-pwho-form">
         </div>
+      </div>
+
+      <div class="particular--pwho__add-new particular__add-new">
+        <%= link_to new_invitee_plan_path(@plan), :class => "js-add-a-person btn btn-xs btn-primary", :remote => true, :method => :post do %>
+          <i class="glyphicon glyphicon-plus"></i> Invite someone <% if @plan.people %>else<% end %>
+        <% end %>
       </div>
     </section>
 
     <section class="particular particular--pwhich js-particular-pwhich">
       <header>
-      <h4><%= link_to "Which <small>type of food are we eating, game are we playing, hobo are we murdering?</small>".html_safe, attach_new_pwhich_path(@plan), :remote => true, :method => :post %></h4>
+      <h4>Which <small>type of food are we eating, game are we playing, hobo are we murdering?</small></h4>
       </header>
+
       <div class="particular--pwhich__contents particular__contents js-particular-pwhich-contents">
         <div class="particular--pwhich__contents__pwhiches js-particular-pwhiches">
-          <% if @plan.pwhiches %>
+          <% unless @plan.pwhiches.blank? %>
             <h5>Current questions</h5>
             <%= render partial: "pwhich", collection: @plan.pwhiches %>
           <% end %>
         </div>
+      </p>
+      </div>
+
+      <div class="particular--pwhich__add-new particular__add-new">
+        <%= link_to attach_new_pwhich_path(@plan), :class => "js-add-a-pwhich btn btn-xs btn-primary", :remote => true, :method => :post do %>
+          <i class="glyphicon glyphicon-plus"></i> Add a new question
+        <% end %>
       </div>
     </section>
 

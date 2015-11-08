@@ -22,10 +22,10 @@
 en:
   button:
     add_people: "Add some people"
-    add_person: "Add person"
+    add_person: "Invite this person"
     gimme_plans: "Gimme all my plans"
     finish: "Finish the plan and send out the invites"
-    add_question: "Add a choice"
+    add_question: "Save this question"
     nevermind: "Nevermind"
   label:
     planner_email: "Where can we email your plan link?"
