@@ -1,3 +1,46 @@
-<h1>These are all of your plans</h1>
+<header>
+  <h1>Here are all the plans for <%= @person.email %></h1>
+</header>
 
-<p>Plans</p>
+<% if @person.tokens.empty? %>
+
+<section>
+  <p>We're not sure what you might remember, but it doesn't look like you have any plans. At least not through our site.</p>
+  <p>It's possible someone just popped your email address in as a joke. We hope you find that jerkface.</p>
+</section>
+
+<% else %>
+
+<section>
+  <% unless @person.planner_tokens.empty? %>
+    <h3>Plans you created</h3>
+    <p>Here are links to edit all the plans that you started. You can invite some more friends. You can work out more particulars. You can check on the status of everyone's responses. Or you can just say screw it and delete everything. You also have to use these links to finalize each plan.</p>
+    <ul>
+      <% @person.planner_tokens.each do |t| %>
+        <li>Token: <%= t.id %>
+      <% end %>
+    </ul>
+  <% else %>
+    <h3>You haven't created any plans but that's cool, you must have plenty to do already.</h3>
+  <% end %>
+</section>
+
+<section>
+  <% unless @person.regular_tokens.empty? %>
+    <h3>Plans you were invited to</h3>
+    <p>Here are links to give your two cents on the particulars of plans that some great friend invited you to. The sooner you get them answered, the sooner you can hang.</p>
+    <ul>
+      <% @person.regular_tokens.each do |t| %>
+        <li>Token: <%= t.id %>
+      <% end %>
+    </ul>
+  <% else %>
+    <h3>Oh. Gee. Um. You haven't been invited to anything. But hey maybe that means you're the organizing type. A true leader!</h3>
+  <% end %>
+</section>
+
+<% end %>
+
+<footer>
+  <h6>Brought to you by <a href="<%= t('site.url') %>"><%= t('site.name') %></a></h6>
+</footer>

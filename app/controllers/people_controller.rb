@@ -36,11 +36,12 @@ class PeopleController < ApplicationController
   def reminder
     respond_to do |format|
       if params[:reminder][:email].blank?
-        @notice = "You did not enter an email address."
+        @notice = t('error.blank_email')
         format.js
       else
         email = params[:reminder][:email]
-        PlanMailer.all_plans(email).deliver_now # @TODO replace this with user model
+        @person = Person.find_by(email: email)
+        PlanMailer.all_plans(@person).deliver_now
         @notice = "Plans have been sent to #{email}"
         format.js
       end

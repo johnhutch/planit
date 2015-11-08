@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :token do
+    
+  end
+
   factory :planner, class: Person do
     email "planner@whatever.com"
   end

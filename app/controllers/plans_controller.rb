@@ -18,6 +18,23 @@ class PlansController < ApplicationController
     
     respond_to do |format|
       if @plan.save && @planner.save
+
+        # Create one token for the planner to use for editing the plan
+        planner_token = Token.new
+        planner_token.id = SecureRandom.hex(32)
+        planner_token.is_planner_token = true
+        planner_token.plan_id = @plan.id
+        planner_token.person_id = @planner.id
+        planner_token.save
+
+        # Then create one token for the planner to answer the questions like a normal invitee.
+        normal_token = Token.new
+        normal_token.id = SecureRandom.hex(32)
+        normal_token.is_planner_token = false
+        normal_token.plan_id = @plan.id
+        normal_token.person_id = @planner.id
+        normal_token.save
+
         format.html { redirect_to edit_plan_path(@plan), notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
