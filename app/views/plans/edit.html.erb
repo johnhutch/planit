@@ -1,7 +1,12 @@
-<div class="page-header text-center">
-  <h2>Planning <em><%= @plan.title %></em></h2>
-  <h4>Managed by <%= @plan.planner.email %></h4>
-</div>
+<% content_for :page_header do %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="page-header__logo page-header__logo--sideways">PLANiT</h1>
+      <h2>Planning <em><%= @plan.title %></em></h2>
+      <h4>Managed by <%= @plan.planner.email %></h4>
+    </div>
+  </div>
+<% end %>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
