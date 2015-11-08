@@ -1,0 +1,2 @@
+$("<%= j (render partial: 'plans/pwhich', locals: {pwhich: @pwhich }) %>").appendTo($('.js-particular-pwhiches')).hide().slideDown("slow");
+$('.js-pwhich-form-container').slideUp("slow").setTimeout(20).empty();

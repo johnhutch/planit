@@ -1,24 +1,11 @@
 class ParticularsController < ApplicationController
   before_action :set_particular, only: [:show, :edit, :update, :destroy]
 
-  def create
-    @particular = Particular.new(particular_params)
-
+  def destroy
+    @pwhich.destroy
     respond_to do |format|
-      if @particular.save
-        case @particular.type
-          when "Pwhich"
-            format.js { render :action => "show_pwhich", status: :created }
-          when "Pwhen"
-            format.js { render :action => "show_pwhen", status: :created }
-          when "Pwhere"
-            format.js { render :action => "show_pwhere", status: :created }
-          else 
-            raise StandardError.new "unknown Particular type: #{@particular.type}"
-          end
-      else
-        format.js { render :action => "bad_save", status: :unprocessable_entity }
-      end
+      format.html { redirect_to pwhiches_url, notice: 'particular was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

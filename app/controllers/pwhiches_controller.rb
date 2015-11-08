@@ -8,12 +8,25 @@ class PwhichesController < ApplicationController
   end
 
   def attach_new
-    plan = Plan.find(params[:id])
-    @pwhich = plan.pwhiches.build
+    @plan = Plan.find(params[:id])
+    @pwhich = @plan.pwhiches.build
 
     respond_to do |format|
       format.js
     end 
+  end
+
+  def save_attach
+    plan = Plan.find(params[:id])
+    @pwhich = plan.pwhiches.build(particular_params)
+
+    respond_to do |format|
+      if @pwhich.save
+        format.js 
+      else
+        format.js { render :action => "bad_save", status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -55,10 +68,10 @@ class PwhichesController < ApplicationController
   # DELETE /pwhiches/1
   # DELETE /pwhiches/1.json
   def destroy
+    @id = @pwhich.id
     @pwhich.destroy
     respond_to do |format|
-      format.html { redirect_to pwhiches_url, notice: 'pwhich was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js { render :action => "remove_pwhich" }
     end
   end
 
@@ -67,7 +80,11 @@ class PwhichesController < ApplicationController
       @pwhich = Pwhich.find(params[:id])
     end
 
+    def particular_params
+      params.require(:particular).permit(:question)
+    end
+
     def pwhich_params
-      params.require(:pwhich).permit(:email, made_plans_attributes: [ :title, :_destroy ])
+      params.require(:pwhich).permit(:question)
     end
 end
