@@ -1,0 +1,32 @@
+<% content_for :page_header do %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= link_to root_path do %><h1 class="page-header__logo page-header__logo--sideways">PLANiT</h1><% end %>
+      <h2>The Plan for <strong><%= @plan.title %></strong></h2>
+      <h4>Managed by <%= @plan.planner.name %></h4>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <h3>Here is an up-to-date report on the plan.</h3>
+    <% @plan.particulars.each do |particular| %>
+      <section class="particular">
+        <header>
+          <h4><%= particular.question %></h4>
+        </header>
+
+        <div class="particular__choices">
+          <% particular.choices.each do |choice| %>
+            <div class="particular__choice">
+              <%= choice.answer %>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+
+  </div>
+</div>

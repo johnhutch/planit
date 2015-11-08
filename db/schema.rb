@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 20151108201649) do
     t.boolean  "is_finalized",     default: false
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.integer  "person_id",  null: false
+    t.integer  "choice_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tokens", force: :cascade do |t|
     t.integer  "person_id",                        null: false
     t.integer  "plan_id",                          null: false
