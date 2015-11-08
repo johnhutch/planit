@@ -17,7 +17,7 @@
     <p>You can edit all the plans that you started. You can invite some more friends. You can work out more particulars. You can check on the status of everyone's responses. Or you can just say screw it and delete everything. You also have to use these links to finalize each plan.</p>
     <ul>
       <% @person.planner_tokens.each do |t| %>
-        <li>Token: <%= t.id %>
+        <li><%= link_to t.plan.title, edit_plan_url(t.plan) %></li>
       <% end %>
     </ul>
   <% else %>
@@ -31,7 +31,7 @@
     <p>How about that? People want to make plans with you. Use these links to give your two cents on the particulars. The sooner you get them answered, the sooner you can hang.</p>
     <ul>
       <% @person.regular_tokens.each do |t| %>
-        <li>Token: <%= t.id %>
+        <li>Token: <%= t.id %></li>
       <% end %>
     </ul>
   <% else %>

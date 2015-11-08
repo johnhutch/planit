@@ -9,7 +9,8 @@ It's possible someone just popped your email address in as a joke. We hope you f
 You can edit all the plans that you started. You can invite some more friends. You can work out more particulars. You can check on the status of everyone's responses. Or you can just say screw it and delete everything. You also have to use these links to finalize each plan.
 
     <% @person.planner_tokens.each do |t| %>
-    Token: <%= t.id %>
+    Plan: <%= t.plan.title %>
+    URL: <%= edit_plan_url(t.plan) %></li>
 
     <% end %>
 <% else %>
