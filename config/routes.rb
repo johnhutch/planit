@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post 'add_invitee'
       post 'remove_invitee'
       get 'respond'
+      post 'finalize'
     end
   end
   resources :particulars do

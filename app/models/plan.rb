@@ -13,4 +13,18 @@ class Plan < ActiveRecord::Base
   def to_param
     planner_token_id
   end
+
+  def regular_tokens
+    self.tokens.where(is_planner_token: false)
+  end
+
+  def planners_other_token
+    self.tokens.where(is_planner_token: false, person_id: self.planner_id).first
+  end
+
+  def send_out_invites
+    self.regular_tokens.each do |t|
+      PlanMailer.invite(t).deliver_now
+    end
+  end
 end
