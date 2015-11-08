@@ -5,8 +5,20 @@
       <%= f.text_field :question, :class => "form-control", :placeholder => t('placeholder.question') %>
     </div>
 
+    <div class="js-choice-fields">
+      <%= f.fields_for :choices do |builder| %>
+        <%= render 'choice_fields', :f => builder %>
+      <% end %>
+    </div>
+
+    <p>
+    <%= link_to attach_choice_path, :class => 'js-add-choice btn btn-default btn-xs', remote: true, :method => :post  do %>
+      <i class="glyphicon glyphicon-upload"></i> Add a new multiple choice option 
+    <% end %>
+    </p>
+
     <div class="form-group">
-      <%= f.submit t("button.add_question"), "data-disable-with" => "Saving...", :class => "btn btn-default btn-xs" %></p>
+      <%= f.submit t("button.add_question"), "data-disable-with" => "Saving...", :class => "btn btn-success " %></p>
     </div>
   <% end %>
 </div>

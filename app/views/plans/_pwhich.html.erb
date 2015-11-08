@@ -1,6 +1,18 @@
 <div class="particular--pwhich__question js-pwhich-question-<%= pwhich.id %>">
   <i class="glyphicon glyphicon-arrow-right"></i> <%= pwhich.question %>
-  <%= link_to pwhich, remote: true, :url => pwhich_path, method: :delete, :class => "particular--pwhich__question__destroy", data: {confirm: 'Are you sure?' } do %>
-    <i class="glyphicon glyphicon-remove-circle js-destroy-pwhich"></i> 
+  <% unless pwhich.choices.empty? %>
+    <ul class="particular--pwhich__question__choices">
+    <% pwhich.choices.each do |choice| %>
+      <li><%= choice.answer %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to attach_choice_path(pwhich), :class => 'js-add-choice particular--pwhich__question__add-choice particular--pwhich__question__control', remote: true, :method => :post  do %>
+    Add a multiple choice option <i class="glyphicon glyphicon-download"></i> 
+  <% end %>
+
+  <%= link_to pwhich, remote: true, :url => pwhich_path, method: :delete, :class => "particular--pwhich__question__destroy particular--pwhich__question__control", data: {confirm: 'Are you sure?' } do %>
+    Delete <i class="glyphicon glyphicon-remove-circle js-destroy-pwhich"></i> 
   <% end %>
 </div>

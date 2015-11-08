@@ -1,4 +1,8 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :choice do
+    particular_id 1
+    answer "MyString"
+  end
+
   factory :planner, class: Person do
     email "planner@whatever.com"
   end

@@ -33,7 +33,9 @@ en:
     title: "So what's the plan?"
     question: "What do you want to ask the group?"
     front_email_help: "That's it! No need to sign up, we'll just email you a secure link to your plan!"
+    choice: "Multiple choice answer:"
   placeholder:
     email: "you@yours.com"
     title: "Dinner in Philadelphia"
     question: "What should we eat? Which movie are we watching?"
+    choice: "Italian, carcassone, in a dark alley"

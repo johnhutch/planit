@@ -1,5 +1,8 @@
 class Particular < ActiveRecord::Base
   belongs_to :plan
+  has_many :choices, :dependent => :destroy
+
+  accepts_nested_attributes_for :choices, :allow_destroy => true
 
   self.inheritance_column = :type
 

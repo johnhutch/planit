@@ -10,6 +10,7 @@ class PwhichesController < ApplicationController
   def attach_new
     @plan = Plan.find(params[:id])
     @pwhich = @plan.pwhiches.build
+    @pwhich.choices.build
 
     respond_to do |format|
       format.js
@@ -19,6 +20,7 @@ class PwhichesController < ApplicationController
   def save_attach
     plan = Plan.find(params[:id])
     @pwhich = plan.pwhiches.build(particular_params)
+    byebug
 
     respond_to do |format|
       if @pwhich.save
@@ -81,10 +83,10 @@ class PwhichesController < ApplicationController
     end
 
     def particular_params
-      params.require(:particular).permit(:question)
+      params.require(:particular).permit(:question, choices_attributes: [ :answer, :_destroy])
     end
 
     def pwhich_params
-      params.require(:pwhich).permit(:question)
+      params.require(:pwhich).permit(:question, choices_attributes: [ :answer, :_destroy ])
     end
 end
