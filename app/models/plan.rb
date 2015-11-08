@@ -4,6 +4,7 @@ class Plan < ActiveRecord::Base
   has_many :particulars
   has_many :tokens, :dependent => :destroy
   has_one :planner_token, :class_name => "Token", :foreign_key => "id", :dependent => :destroy
+  has_many :responses
 
   accepts_nested_attributes_for :particulars, :allow_destroy => true
 
