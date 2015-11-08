@@ -29,6 +29,7 @@ en:
     add: "Add"
     gimme_plans: "Gimme all my plans"
     finish: "I'm finished! Send out the invites"
+    save_no_send: "Save what I've added"
     add_question: "Save this question"
     nevermind: "Nevermind"
     submit_responses: "Submit reponses"

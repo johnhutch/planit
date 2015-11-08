@@ -86,17 +86,20 @@ class PlansController < ApplicationController
 
   def finalize
     @plan = Plan.find_by(:planner_token_id => params[:id])
-    @plan.is_finalized = true
 
-    @plan.people.map do |p|
-      person_token = Token.new
-      person_token.become_regular_token(@plan, p)
-      person_token.save
+    unless @plan.is_finalized
+      @plan.is_finalized = true
+
+      @plan.people.map do |p|
+        person_token = Token.new
+        person_token.become_regular_token(@plan, p)
+        person_token.save
+      end
     end
 
     respond_to do |format|
       if @plan.save
-        @plan.send_out_invites
+        @plan.send_out_invites unless @plan.is_finalized
         format.html { redirect_to respond_plan_path(@plan.planners_other_token.id) }
       else
         format.html { redirect_to edit_plan_path(@plan), notice: 'That finalize button isn\'t working.' }

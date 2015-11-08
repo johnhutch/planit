@@ -27,7 +27,7 @@
               </div>
               <div class="particular--pwho__invitee__email"><%= person.email %></div>
 
-              <% unless person == @plan.planner %>
+              <% unless ((person == @plan.planner) || (@plan.is_finalized)) %>
                 <%# needs to actually be a form so it can submit both plan and person params %>
                 <%= link_to person, remote: true, :url => remove_invitee_plan_path, method: :delete, :class => "particular--pwho__invitee__destroy particular--pwho__invitee__control particular__control particular__control__destroy", data: {confirm: 'Are you sure?' } do %>
                   Delete <i class="glyphicon glyphicon-remove-circle js-destroy-pwhich"></i> 
@@ -84,7 +84,11 @@
 
     <section class="finish-plan text-center">
       <%= link_to finalize_plan_path(@plan), 'data-disable-with' => 'Taking care of business...', :class => "btn btn-lg btn-success", :method => :post do %>
-        <%= t('button.finish') %> <i class="glyphicon glyphicon-send"></i>
+        <% unless @plan.is_finalized %>
+          <%= t('button.finish') %> <i class="glyphicon glyphicon-send"></i>
+        <% else %>
+          <%= t('button.save_no_send') %>
+        <% end %>
       <% end %>
     </section>
   </div>
