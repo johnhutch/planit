@@ -5,8 +5,26 @@ class PlansController < ApplicationController
   end
 
   def new
+    @plan = Plan.new
     @planner = Person.new
-    @plan = @planner.made_plans.build
+  end
+
+  def create
+    @plan = Plan.new(plan_params)
+    @planner = Person.find_or_create_by(email: params[:plan][:person][:email])
+
+    @plan.planner_id = @planner.id
+    @plan.people << @planner
+    
+    respond_to do |format|
+      if @plan.save && @planner.save
+        format.html { redirect_to edit_plan_path(@plan), notice: 'Plan was successfully created.' }
+        format.json { render :show, status: :created, location: @person }
+      else
+        format.html { redirect_to root_path, notice: "You fucked up. Try again." }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def new_invitee
@@ -20,7 +38,7 @@ class PlansController < ApplicationController
 
   def add_invitee
     @plan = Plan.find(params[:id])
-    @invitee = Person.new(invitee_params)
+    @invitee = Person.find_or_create_by(invitee_params)
 
     respond_to do |format|
       if @invitee.save

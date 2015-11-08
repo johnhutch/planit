@@ -7,22 +7,6 @@ class PeopleController < ApplicationController
   def show
   end
 
-  def create
-    @person = Person.new(person_params)
-
-    respond_to do |format|
-      if @person.save
-        @plan = @person.made_plans.last
-        @plan.people << @person
-        format.html { redirect_to edit_plan_path(@plan), notice: 'Plan was successfully created.' }
-        format.json { render :show, status: :created, location: @person }
-      else
-        format.html { redirect_to root_path, notice: "You fucked up. Try again." }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
