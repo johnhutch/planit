@@ -1,0 +1,6 @@
+SENDGRID_USERNAME: "username"
+SENDGRID_PASSWORD: "password"
+
+production:
+  SENDGRID_USERNAME: "username@heroku.com"
+  SENDGRID_PASSWORD: "password"
